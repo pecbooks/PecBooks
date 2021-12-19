@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
+<div id="shelf">
+
+    <%if(book.length==0){%>
+        <div id="nobook">
+            No such Book found :(
+        </div>
+    <%}%>
+    <%for(var i=0;i<book.length;i++){%>
+
+        <div id="book">
+            <%if(book[i].item.avatar){%>
+                <a id="book-img" href="<%=book[i].item.avatar%>"><img src="<%=book[i].item.avatar%>" alt="Book Image" height="100%" width="100%"></a>
+            <%}else{%>
+                <a id="book-img" href="/uploads/books/image/Book_Avatar.png"><img src="/uploads/books/image/Book_Avatar.png" alt="Book Image" height="100%" width="100%"></a>
+            <%}%>
+            <div id="book-info">
+                <h4 id="book-title"> <%=book[i].item.title%> </h4>
+                <p>Author: <%=book[i].item.author%></p>
+                <p>Location: <%=book[i].item.location%></p>
+                <p>Seller: <a href="/users/profile/<%=users[i].user._id%>"><%=users[i].user.name%></a></p>
+                <p id="price">₹<%=book[i].item.price%></p>
+            </div>
+        </div>
+
+    <%}%>
+
+  
+</div>

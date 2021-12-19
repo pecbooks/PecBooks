@@ -1,0 +1,20 @@
+
+<header>
+    <div class="nav">
+                
+        <div class="navIcon"> <a href="#"> Contact Us </a></div>
+        <div class="navIcon"> <a href="/books/all-books"> All Books </a></div>
+        <div  id="logo"> <a href="/">Pec-Books</a></div>
+        <%if(!(locals.user)){%>
+        <div class="navIcon"> <a href="/users/sign-in"> Sign In</a></div>
+        <!-- <div class="navIcon"> <a href="/users/sign-up"> Sign Up</a></div> -->
+        <%}else{%>
+            <div class="navIcon"> <a href="/users/profile/<%=locals.user.id%>"> My profile</a></div>
+        <%}%>
+        <div  id="sell"> <a href="/books/add"> Sell Book</a></div>
+       
+        
+</div>
+
+</div>
+</header>

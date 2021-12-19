@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/signin.css')%>">
+    <%if(locals.user){%>
+
+        <div id="container">
+            <div id="parent-sign-in">
+                <h1>Post Ad</h1>
+                <form action="/books/post" method="POST" id="signin" enctype="multipart/form-data">
+                    <br>
+                    <div id="formbox">
+                    <div class="forminfo">Title</div>
+                    <input class="si" type="text" name="title" placeholder="Title" maxlength="35" required> <br> <br>
+                    <div class="forminfo">Author/Publisher</div>
+                    <input class="si" type="text" name="author" placeholder="Author" maxlength="30" >  <br> <br>
+                    <div class="forminfo">Location</div>
+                    <input class="si" type="text" name="location" placeholder="Location" maxlength="30"> <br> <br>
+                    <div class="forminfo">Price</div>
+                    <input class="si" type="number" name="price" placeholder="₹" required> <br><br>
+                    <%if(!locals.user.phone){%>
+                        <div class="forminfo">Contact</div>
+                        <input class="si" type="number" name="phone" placeholder="Contact" required> <br><br>
+                    <%}%>
+                    <div class="forminfo">Content:</div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="Book" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                          Book
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="exampleRadios2" value="Notes">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Notes
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="exampleRadios3" value="Question Pçaper">
+                        <label class="form-check-label" for="exampleRadios3">
+                          Question Paper
+                        </label>
+                      </div>
+                      <br>
+                    <div class="forminfo">Book Image</div> <br>
+                    <input type="file" class="file-upload" name="avatar" placeholder="Add Image"> <br><br>
+                    <!-- <label for="type">Choose a category:</label>
+                    <select id="type" name="type">
+                        <option value="book">Book</option>
+                        <option value="notes">Notes</option>
+                    </select> -->
+                    
+                    </div>
+                    <br>
+                    <input class="submit" type="submit" value="Post">
+                </form>
+            </div>
+            <div id="images">
+                <div id="img1" class="imgs" >
+                    <img src="<%=assetPath('/img/book3.jpg')%>" alt="">
+                </div>
+                
+                <div id="img2" class="imgs">
+                    <img src="<%=assetPath('/img/book2.jpg')%>" alt="">
+                </div>
+        
+                <div id="img3" class="imgs">
+                    <img src="<%=assetPath('/img/book1.jpg')%>" alt="">
+                </div>
+            </div>
+        </div>
+    <%}else{%>
+        <h2>Please Log In First!!</h2>
+    <%}%>

@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Sign In</title>
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('/css/signin.css')%>">
+</head>
+<script>
+    $(document).ready(function(){
+        $('#forgot').click(function() {
+          $('#forgot-form').toggle("slide");
+        });
+    });
+    </script>
+<body>
+    
+<div id="container">
+   
+    <div id="parent-sign-in">
+
+        <h1>Sign In</h1>
+        <span class="info">No account yet?</span> <a href="/users/sign-up" class="info" id="link">Create an account</a>
+        <p class="info">Quick sign in available using</p> 
+        <a href="/users/auth/google">  <div id="glogo"> <img src="<%=assetPath('/img/google-logo.png')%>" alt="G+"></img> </div> </a>
+        <br><br><br>
+        <div id="enter-details" class="info"> Or, enter your details </div>
+        <form action="/users/create-session" method="POST" id="signin">
+            <br>
+            <div id="formbox">
+            <div class="forminfo">Email address</div>
+            <input class="si" type="email" name="email" placeholder="email@mail.com"  required> <br> <br>
+            <div class="forminfo">Password</div>
+            <input class="si" type="password" name="password" placeholder="Password"  required> <br>
+            </div>
+            
+            <br>
+            <input class="submit" type="submit" value="Sign In">
+        
+        </form>
+        
+        <p class="info" id="forgot">Forgot Password?</p>
+            <div id="forgot-form">
+                <form action="/users/forgot-password" method="POST">
+                    <input type="email" id="otp" class="otp" name="email" placeholder="Your registered email" required><br> <br>
+
+                    <input type="submit" class="otp"  value="Send OTP">
+                </form>
+            </div>
+
+    
+    
+    </div> 
+
+    <div id="images">
+        <div id="img1" class="imgs" >
+            <img src="<%=assetPath('/img/book3.jpg')%>" alt="">
+        </div>
+        
+        <div id="img2" class="imgs">
+            <img src="<%=assetPath('/img/book2.jpg')%>" alt="">
+        </div>
+
+        <div id="img3" class="imgs">
+            <img src="<%=assetPath('/img/book1.jpg')%>" alt="">
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

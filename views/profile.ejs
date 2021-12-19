@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile | <%=profile_user.name%>></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <link rel="stylesheet" href=" <%=assetPath('/css/profile.css')%>">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#update').click(function() {
+              $('#update-form').toggle("slide");
+            });
+        });
+        </script>
+
+</head>
+
+
+<body>
+
+    <div id="user-info">
+    <div id="info-container">
+    <span id="dp-par">
+     <%if(profile_user.avatar){%>
+        <img id="dp" src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
+    <%}else{%>
+        <img id="dp" src="/uploads/users/avatars/Sample_Avatar.png" alt="Profile Picture" width="20%" height="30%">
+    <%}%>
+    </span>
+    <span id="name-par">
+    <h3 id="name"><%=profile_user.name%></h3>
+    </span>
+    <span id="perinfo">
+    <i class="far fa-envelope" ></i> <span class="info"> <%=profile_user.email%></span><br><br>
+    <i class="fa fa-phone" aria-hidden="true"></i> <span class="info"> <%=profile_user.phone%></span><br><br>
+    <i class="fas fa-user-slash"></i> <span class="info"> <a href="/users/delete">Delete My Account</a> </span>
+    </span>
+<!-- . -->
+    </div>
+
+    <%if(user.id==profile_user.id){%>
+
+        <h3 id="update" class="forminfo">Update Your Profile</h3>
+        <div id="update-form">
+        <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST"> <br>
+        <div class="forminfo">Update Name</div>
+        <input class="si" type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>" maxlength="30" > <br> <br>
+        <div class="forminfo">Update Contact Number</div>
+        <input class="si" type="number" name="phone" placeholder="Your Contact Number" value="<%=profile_user.phone%>"> <br> <br>
+        <div class="forminfo">Update email</div>
+        <input class="si" type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required> <br> <br>
+        <div class="forminfo">Update Profile Picture</div>
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="update">
+        </form>
+        </div>
+
+        
+    <a id="sign-out" href="/users/sign-out"><button>Sign Out</button></a>
+
+    <%}%>
+    </div>
+    
+
+   
+
+    <br>
+
+  
+    <div id="ads">
+    <div id="ads-title"> Ads published by <%=profile_user.name%></div>
+
+        <div id="shelf">
+            <%for(var i=0;i<books.length;i++){%>
+
+                <div id="book">
+
+                    <%if(books[i].avatar){%>
+                        <a id="book-img" href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+                    <%}else{%>
+                        <a id="book-img" href="/uploads/books/image/Book_Avatar.png"><img src="/uploads/books/image/Book_Avatar.png" alt="Book Image" height="100%" width="100%"></a>
+                    <%}%>
+                    <div id="book-info">
+                        <h4 id="book-title"> <%=books[i].title%> </h4>
+                        <p>Author: <%=books[i].author%></p>
+                        <p>Location: <%=books[i].location%></p>
+                        <p>Seller: <a href="/users/profile/<%=books[i].user.id%>"><%=books[i].user.name%></a></p>
+                        <p id="price">₹<%=books[i].price%></p> 
+                        <%if(user.id==profile_user.id){%>
+                         <a id="delete" href="/books/remove/<%=books[i].id%>"> Delete</a>
+                        <%}%>
+                    </div>
+                </div>
+
+            <%}%>
+
+        </div>  
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script>
+        <%if((flash.success)&&(flash.success.length>0)){%>
+
+            new Noty({
+            theme: 'relax',
+            text: '<%=flash.success%>',
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500
+        }).show();
+        
+        <%}%>
+    </script>
+
+</body>
+</html>

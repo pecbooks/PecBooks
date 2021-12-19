@@ -1,0 +1,28 @@
+
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
+<div id="shelf">
+    <%for(var i=0;i<book.length;i++){%>
+        <a href="/users/profile/<%=book[i].user.id%> id">
+        <div id="book">
+            <%if(book[i].avatar){%>
+                <a id="book-img" href="<%=book[i].avatar%>"><img src="<%=book[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+            <%}else{%>
+                <a id="book-img" href="/uploads/books/image/Book_Avatar.png"><img src="/uploads/books/image/Book_Avatar.png" alt="Book Image" height="100%" width="100%"></a>
+            <%}%>
+            <div id="book-info">
+                <h4 id="book-title"> <%=book[i].title%> </h4>
+                <p>Author: <%=book[i].author%></p>
+                <p>Location: <%=book[i].location%></p>
+                <p>Seller: <a href="/users/profile/<%=book[i].user.id%>"><%=book[i].user.name%></a></p>
+                <p>Type: <%=book[i].type%></p>
+                <p id="price">₹<%=book[i].price%></p>
+                <%if((user.id==book[i].user.id)||((user.email=='viveksinghkhatkar@gmail.com')||(user.email=='aniketsood.bt19ece@pec.edu.in'))){%>
+                    <a id="delete" href="/books/remove/<%=book[i].id%>"> Delete</a>
+                <%}%>
+            </div>
+        </div>
+    </a>
+
+    <%}%>
+
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> <%=title%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('/css/signin.css')%>">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#forgot').click(function() {
+          $('#forgot-form').toggle("slide");
+        });
+    });
+    </script>
+<body>
+ <div id="container">   
+   
+    <div id="parent-sign-in">
+    <h1>Sign Up</h1>
+
+    <p class="info">Quick sign up avalilable using</p> 
+    <a href="/users/auth/google">  <div id="glogo"> <img src="<%=assetPath('/img/google-logo.png')%>" alt="G+"></img> </div> </a>
+    <br><br><br>
+    <div id="enter-details" class="info">Or, enter your details</div>
+    <form action="/users/create" method="POST" id="signin">
+        <br>
+        <div id="formbox">
+        <div class="forminfo">Full Name</div>
+        <input class="si" type="text" name="name" placeholder="Your Name"  required maxlength="20" > <br> <br>
+        <div class="forminfo">Email address</div>
+        <input class="si" type="email" name="email" placeholder="email@mail.com"  required > <br> <br>
+        <div class="forminfo">Contact Number</div>
+        <input class="si" type="number" name="phone" placeholder="Your Contact Number"  required > <br> <br>
+        <div class="forminfo">Password</div>
+        <input class="si" type="password" name="password" placeholder="Password" maxlength="30"  minlength="5" required> <br><br>
+        <div class="forminfo">Confirm Password</div>
+        <input class="si" type="password" name="confirm_password" placeholder="Confirm Password" maxlength="30" minlength="5"   required> <br>
+        
+        </div>
+        <br>
+        <input class="submit" type="submit" value="Sign Up">
+    </form>
+
+    
+    
+    </div>
+        <div id="images">
+            <div id="img1" class="imgs" >
+                <img src="<%=assetPath('/img/book3.jpg')%>" alt="">
+            </div>
+            
+            <div id="img2" class="imgs">
+                <img src="<%=assetPath('/img/book2.jpg')%>" alt="">
+            </div>
+
+            <div id="img3" class="imgs">
+                <img src="<%=assetPath('/img/book1.jpg')%>" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <script>
+            <%if((flash.success)&&(flash.success.length>0)){%>
+                new Noty({
+                theme: 'relax',
+                text: '<%=flash.success%>',
+                type: 'success',
+                layout: 'topRight',
+                timeout: 1500
+            }).show();
+            <%}else if((flash.error)&&(flash.error.length>0)){%>
+                new Noty({
+                theme: 'relax',
+                text: '<%=flash.error%>',
+                type: 'error',
+                layout: 'topRight',
+                timeout: 1500
+                }).show();
+            <%}%>
+    </script>
+</body>
+</html>

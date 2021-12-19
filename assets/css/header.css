@@ -1,0 +1,54 @@
+  
+  .nav {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    top: 10px;
+    /* margin-left: 5vw; */
+    /* text-shadow: 4px 4px 8px black; */
+    z-index: 10;
+    /* background-color: rgb(0, 204, 255); */
+  }
+  
+  #logo a {
+    /* float: left; */
+    font-size: 70px;
+    font-weight: 900;
+    color: rgb(100, 100, 100);
+    text-decoration: none;
+    font-family: festive;
+  }
+  
+  .navIcon a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.801);
+    text-decoration: none;
+    transition: all .1s;
+    /* border-radius: 35%; */
+    padding: 1px;
+    color: black;
+  }
+  
+  .navIcon a:hover {
+    /* background-color: rgb(197, 197, 197); */
+    /* border-bottom: 1px solid white; */
+    color:#ff5201
+    /* text-shadow: 4px 4px 8px black; */
+    /* font-size: 33px; */
+  }
+  
+  #sell a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 10px;
+    background-color: #ff5201;
+    border-radius: 8px;
+  }
+  
+  #sell a:hover {
+    background-color: rgba(255, 81, 1, 0.671);
+  }
